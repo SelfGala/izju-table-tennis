@@ -1,15 +1,21 @@
 :root {
-  --bg: #f7f7f5;
-  --panel: #ffffff;
-  --text: #171717;
-  --muted: #6b7280;
-  --line: #e5e7eb;
-  --accent: #1f4b3f;
-  --accent-soft: #eff4f1;
+  --bg: #f3efe5;
+  --bg-accent: radial-gradient(circle at top left, rgba(191, 146, 84, 0.16), transparent 34%),
+    radial-gradient(circle at top right, rgba(31, 75, 63, 0.12), transparent 28%),
+    linear-gradient(180deg, #f8f4eb 0%, #f2eee4 100%);
+  --panel: rgba(255, 252, 247, 0.88);
+  --panel-strong: #fffdf8;
+  --text: #1d1d1b;
+  --muted: #6d6b66;
+  --line: rgba(90, 79, 62, 0.14);
+  --accent: #21493f;
+  --accent-soft: #edf3ef;
+  --accent-warm: #c28c44;
   --positive: #0f766e;
   --negative: #b91c1c;
-  --shadow: 0 1px 2px rgba(23, 23, 23, 0.04);
-  --radius: 8px;
+  --shadow: 0 18px 44px rgba(43, 34, 21, 0.08);
+  --shadow-soft: 0 8px 20px rgba(43, 34, 21, 0.05);
+  --radius: 18px;
 }
 
 * {
@@ -17,7 +23,7 @@
 }
 
 html {
-  background: var(--bg);
+  background: var(--bg-accent);
   color: var(--text);
   scroll-behavior: smooth;
 }
@@ -25,11 +31,11 @@ html {
 body {
   margin: 0;
   font-family:
-    Inter,
+    "IBM Plex Sans",
+    "Noto Sans SC",
     -apple-system,
     BlinkMacSystemFont,
     "Segoe UI",
-    Roboto,
     sans-serif;
   line-height: 1.6;
 }
@@ -51,15 +57,27 @@ button {
 
 .shell {
   min-height: 100vh;
+  position: relative;
+}
+
+.shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.28), transparent 82%);
 }
 
 .site-header {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(247, 247, 245, 0.94);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(229, 231, 235, 0.9);
+  background: rgba(248, 244, 235, 0.82);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(90, 79, 62, 0.12);
 }
 
 .header-inner,
@@ -73,13 +91,13 @@ button {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding: 18px 0;
+  padding: 18px 0 16px;
 }
 
 .brand-mark {
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   font-weight: 700;
-  letter-spacing: 0;
+  letter-spacing: 0.01em;
 }
 
 .brand-subtitle {
@@ -92,28 +110,52 @@ button {
 .site-nav {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 }
 
 .nav-link {
-  padding: 6px 0;
+  padding: 9px 12px;
   color: var(--muted);
-  border-bottom: 1px solid transparent;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  transition: border-color 0.18s ease, background-color 0.18s ease, color 0.18s ease;
 }
 
 .nav-link.is-active,
 .nav-link:hover {
   color: var(--text);
-  border-color: var(--text);
+  border-color: rgba(31, 75, 63, 0.16);
+  background: rgba(255, 255, 255, 0.56);
 }
 
-.header-note {
+.lang-switch {
+  display: inline-grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  padding: 4px;
+  border-radius: 999px;
+  border: 1px solid rgba(90, 79, 62, 0.12);
+  background: rgba(255, 255, 255, 0.62);
+  box-shadow: var(--shadow-soft);
+}
+
+.lang-button {
+  min-height: 36px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
   color: var(--muted);
-  font-size: 0.9rem;
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+.lang-button.is-active {
+  background: var(--accent);
+  color: #fff;
 }
 
 .main-content {
-  padding: 28px 0 64px;
+  padding: 34px 0 76px;
 }
 
 .summary-grid,
@@ -121,6 +163,15 @@ button {
 .player-layout {
   display: grid;
   gap: 18px;
+}
+
+.panel-toolbar,
+.filter-row,
+.list-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .summary-grid {
@@ -137,10 +188,21 @@ button {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
 }
 
 .summary-card {
   padding: 22px;
+}
+
+.summary-card-accent {
+  background: linear-gradient(135deg, rgba(31, 75, 63, 0.94) 0%, rgba(46, 95, 81, 0.9) 100%);
+  color: #fff;
+}
+
+.summary-card-accent .eyebrow,
+.summary-card-accent .summary-meta {
+  color: rgba(255, 255, 255, 0.78);
 }
 
 .eyebrow {
@@ -218,9 +280,10 @@ h2 {
   width: 100%;
   padding: 11px 12px;
   border: 1px solid var(--line);
-  border-radius: 6px;
-  background: #fff;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.86);
   color: var(--text);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
 }
 
 .ranking-table-wrap,
@@ -260,7 +323,7 @@ h2 {
 }
 
 .clickable-row:hover {
-  background: #fafaf9;
+  background: rgba(255, 255, 255, 0.64);
 }
 
 .event-list {
@@ -269,15 +332,18 @@ h2 {
 }
 
 .event-card {
-  background: var(--panel);
+  background: rgba(255, 252, 247, 0.82);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 20px;
   cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
 }
 
 .event-card:hover {
-  background: #fafaf9;
+  background: rgba(255, 255, 255, 0.92);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
 }
 
 .event-card-top {
@@ -357,8 +423,8 @@ h2 {
   gap: 12px;
   padding: 14px 15px;
   border: 1px solid var(--line);
-  border-radius: 6px;
-  background: #fff;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.88);
 }
 
 .roster-item strong {
@@ -368,9 +434,9 @@ h2 {
 .empty-block {
   padding: 18px;
   border: 1px dashed var(--line);
-  border-radius: 6px;
+  border-radius: 12px;
   color: var(--muted);
-  background: #fcfcfb;
+  background: rgba(255, 255, 255, 0.62);
 }
 
 .ranking-cards {
@@ -379,10 +445,11 @@ h2 {
 }
 
 .player-card {
-  background: var(--panel);
+  background: rgba(255, 252, 247, 0.84);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 18px;
+  box-shadow: var(--shadow-soft);
 }
 
 .player-card-top {
@@ -559,7 +626,7 @@ h2 {
   justify-content: center;
   min-height: 42px;
   padding: 0 14px;
-  border-radius: 6px;
+  border-radius: 999px;
   transition: background-color 0.16s ease, border-color 0.16s ease, color 0.16s ease;
 }
 
@@ -567,11 +634,11 @@ h2 {
 .button-solid,
 .button-text {
   border: 1px solid var(--line);
-  background: #fff;
+  background: rgba(255, 255, 255, 0.92);
 }
 
 .button-solid {
-  background: var(--accent);
+  background: linear-gradient(135deg, var(--accent) 0%, #2e5f51 100%);
   color: #fff;
   border-color: var(--accent);
 }
@@ -583,12 +650,12 @@ h2 {
 }
 
 .button:hover {
-  border-color: #cbd5e1;
+  border-color: rgba(31, 75, 63, 0.26);
 }
 
 .button-solid:hover {
-  background: #173a31;
-  border-color: #173a31;
+  background: linear-gradient(135deg, #18372f 0%, #21493f 100%);
+  border-color: #18372f;
 }
 
 .admin-form {
@@ -618,7 +685,7 @@ h2 {
 .banner {
   margin-bottom: 18px;
   padding: 12px 14px;
-  border-radius: 6px;
+  border-radius: 12px;
   border: 1px solid var(--line);
 }
 
@@ -671,6 +738,12 @@ code {
     flex-direction: column;
   }
 
+  .header-actions {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
   .search-field {
     width: 100%;
     min-width: 0;
@@ -686,6 +759,10 @@ code {
   .site-nav {
     gap: 12px;
     flex-wrap: wrap;
+  }
+
+  .lang-switch {
+    width: 100%;
   }
 
   .event-card-top {
@@ -720,5 +797,14 @@ code {
   .list-foot {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .filter-row,
+  .panel-toolbar {
+    width: 100%;
+  }
+
+  .filter-clear {
+    width: 100%;
   }
 }

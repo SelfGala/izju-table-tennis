@@ -7,9 +7,9 @@ export function escapeHtml(value) {
     .replaceAll("'", "&#39;");
 }
 
-export function formatDate(dateString) {
-  if (!dateString) return "未开始";
-  const formatter = new Intl.DateTimeFormat("zh-CN", {
+export function formatDate(dateString, locale = "zh-CN", fallback = "未开始") {
+  if (!dateString) return fallback;
+  const formatter = new Intl.DateTimeFormat(locale, {
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
@@ -17,8 +17,12 @@ export function formatDate(dateString) {
   return formatter.format(new Date(dateString));
 }
 
-export function formatCompactDate(dateString) {
-  if (!dateString) return "未开始";
+export function formatCompactDate(dateString, locale = "zh-CN", fallback = "未开始") {
+  if (!dateString) return fallback;
+  if (locale.startsWith("en")) {
+    const [year, month, day] = dateString.split("-");
+    return `${month}/${day}/${year}`;
+  }
   return dateString.replaceAll("-", ".");
 }
 
@@ -26,8 +30,12 @@ export function formatRating(value) {
   return `${Math.round(value)}`;
 }
 
-export function formatPercent(value) {
-  return `${Math.round(value * 100)}%`;
+export function formatPercent(value, locale = "zh-CN") {
+  const formatter = new Intl.NumberFormat(locale, {
+    style: "percent",
+    maximumFractionDigits: 0,
+  });
+  return formatter.format(value);
 }
 
 export function parseHashRoute() {
@@ -54,34 +62,20 @@ export function scoreLooksValid(score) {
   return /^\d{1,2}:\d{1,2}(,\d{1,2}:\d{1,2})*$/.test(score.trim());
 }
 
-export function getBaseUrl() {
-  const basePath = window.APP_CONFIG?.basePath ?? "";
-  return `${window.location.origin}${basePath}`;
-}
+export function createSvgLineChart(points, widthOrOptions = 560, height = 220, maybeOptions = {}) {
+  let width = widthOrOptions;
+  let options = maybeOptions;
 
-export function getRedirectUri() {
-  const redirectPath = window.APP_CONFIG?.oauth?.redirectPath ?? "/";
-  return `${getBaseUrl()}${redirectPath}`;
-}
+  if (typeof widthOrOptions === "object") {
+    width = widthOrOptions.width ?? 560;
+    height = widthOrOptions.height ?? 220;
+    options = widthOrOptions;
+  }
 
-export function toBase64Unicode(value) {
-  const bytes = new TextEncoder().encode(value);
-  let binary = "";
-  bytes.forEach((byte) => {
-    binary += String.fromCharCode(byte);
-  });
-  return btoa(binary);
-}
+  const { locale = "zh-CN", emptyLabel = "暂无积分变化", ariaLabel = "积分变化图" } = options;
 
-export function fromBase64Unicode(value) {
-  const binary = atob(value);
-  const bytes = Uint8Array.from(binary, (char) => char.charCodeAt(0));
-  return new TextDecoder().decode(bytes);
-}
-
-export function createSvgLineChart(points, width = 560, height = 220) {
   if (!points.length) {
-    return `<div class="chart-empty">暂无积分变化</div>`;
+    return `<div class="chart-empty">${emptyLabel}</div>`;
   }
 
   const padding = { top: 18, right: 10, bottom: 24, left: 12 };
@@ -108,11 +102,11 @@ export function createSvgLineChart(points, width = 560, height = 220) {
     };
   });
 
-  const firstLabel = points[0]?.date ?? "";
-  const lastLabel = points[points.length - 1]?.date ?? "";
+  const firstLabel = formatCompactDate(points[0]?.date ?? "", locale, "");
+  const lastLabel = formatCompactDate(points[points.length - 1]?.date ?? "", locale, "");
 
   return `
-    <svg viewBox="0 0 ${width} ${height}" class="chart-svg" aria-label="积分变化图" role="img">
+    <svg viewBox="0 0 ${width} ${height}" class="chart-svg" aria-label="${ariaLabel}" role="img">
       ${ticks
         .map(
           (tick) => `
@@ -124,10 +118,9 @@ export function createSvgLineChart(points, width = 560, height = 220) {
       <path d="${path}" class="chart-line" />
       ${points
         .map((point, index) => {
-          const x =
-            padding.left + (points.length === 1 ? innerWidth / 2 : (innerWidth * index) / (points.length - 1));
+          const x = padding.left + (points.length === 1 ? innerWidth / 2 : (innerWidth * index) / (points.length - 1));
           const y = padding.top + innerHeight - ((point.rating - minValue) / span) * innerHeight;
-          return `<circle cx="${x}" cy="${y}" r="3" class="chart-dot"><title>${point.date} ${point.rating}</title></circle>`;
+          return `<circle cx="${x}" cy="${y}" r="3" class="chart-dot"><title>${formatDate(point.date, locale, "")} ${point.rating}</title></circle>`;
         })
         .join("")}
       <text x="${padding.left}" y="${height - 6}" class="chart-axis">${firstLabel}</text>
