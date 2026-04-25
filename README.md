@@ -182,6 +182,28 @@ window.APP_CONFIG = {
 3. `Source` 选择 `GitHub Actions`
 4. 等待工作流执行完成
 
+### 首次部署报错处理
+
+如果 Actions 日志里出现下面这类错误：
+
+```text
+Get Pages site failed. Please verify that the repository has Pages enabled...
+```
+
+说明仓库当前还没有启用 Pages 站点。处理方式有两种：
+
+1. 手动启用
+   进入仓库 `Settings -> Pages`，把 `Source` 切到 `GitHub Actions`，然后重新运行工作流。
+2. 自动启用
+   新建一个仓库 Secret：`PAGES_PAT`
+   这个 token 需要满足以下其一：
+   `repo` scope，或 Pages 写权限
+
+当前工作流已经兼容这两种模式：
+
+- 有 `PAGES_PAT`：`actions/configure-pages@v5` 会尝试自动启用 Pages
+- 没有 `PAGES_PAT`：工作流仍会使用默认 `GITHUB_TOKEN`，但要求你先在仓库设置里手动开启 Pages
+
 ## 使用建议
 
 - 新增球员：直接编辑 [data/players.json](/home/zibo/zibo/pingpang/data/players.json)，每位球员的 `initialRating` 建议保持 `1500`
