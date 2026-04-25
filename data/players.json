@@ -1,0 +1,32 @@
+[
+  {
+    "id": "zhangsan",
+    "name": "张三",
+    "initialRating": 1500,
+    "joinDate": "2025-01-01"
+  },
+  {
+    "id": "lisi",
+    "name": "李四",
+    "initialRating": 1500,
+    "joinDate": "2025-01-01"
+  },
+  {
+    "id": "wangwu",
+    "name": "王五",
+    "initialRating": 1500,
+    "joinDate": "2025-01-05"
+  },
+  {
+    "id": "zhaoliu",
+    "name": "赵六",
+    "initialRating": 1500,
+    "joinDate": "2025-01-08"
+  },
+  {
+    "id": "sunqi",
+    "name": "孙七",
+    "initialRating": 1500,
+    "joinDate": "2025-01-10"
+  }
+]
