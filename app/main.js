@@ -118,7 +118,7 @@ function renderHeader() {
       <div class="header-inner">
         <div class="brand-block">
           <a href="${buildHash("/")}" class="brand-mark">${escapeHtml(window.APP_CONFIG.siteTitle)}</a>
-          <p class="brand-subtitle">安静、直接、可追溯的校内积分赛看板</p>
+          <p class="brand-subtitle">浙江大学国际联合学院乒乓球积分系统</p>
         </div>
         <div class="header-actions">
           <nav class="site-nav" aria-label="主导航">

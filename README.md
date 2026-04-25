@@ -119,7 +119,7 @@ python3 -m http.server 4173
 
 ```js
 window.APP_CONFIG = {
-  siteTitle: "校内乒乓球积分赛",
+  siteTitle: "iZJU-乒乓球积分赛",
   repoOwner: "your-github-name",
   repoName: "your-repo-name",
   repoBranch: "main",

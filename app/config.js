@@ -1,5 +1,5 @@
 window.APP_CONFIG = {
-  siteTitle: "iZJU乒乓球积分赛",
+  siteTitle: "iZJU-乒乓球积分赛",
   repoOwner: "SelfGala",
   repoName: "izju-table-tennis",
   repoBranch: "main",
