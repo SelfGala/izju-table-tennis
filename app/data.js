@@ -12,13 +12,15 @@ async function loadJson(path) {
 
 export async function loadLeagueData(force = false) {
   if (cache && !force) return cache;
-  const [players, matches] = await Promise.all([
+  const [players, matches, events] = await Promise.all([
     loadJson("./data/players.json"),
     loadJson("./data/matches.json"),
+    loadJson("./data/events.json"),
   ]);
   cache = {
     players,
     matches,
+    events,
     ...buildLeagueTable(players, matches),
   };
   return cache;

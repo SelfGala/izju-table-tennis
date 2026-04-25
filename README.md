@@ -24,6 +24,7 @@
 │   ├── rating.js
 │   └── utils.js
 ├── data
+│   ├── events.json
 │   ├── matches.json
 │   └── players.json
 ├── oauth
@@ -60,6 +61,21 @@
     "score": "11:9,11:7,11:5",
     "winnerRatingChange": 16,
     "loserRatingChange": -16
+  }
+]
+```
+
+### `data/events.json`
+
+```json
+[
+  {
+    "id": "spring-dawn-cup-2026",
+    "name": "2026 春晓杯",
+    "season": "2026.04.25",
+    "startDate": "2026-04-25",
+    "status": "upcoming",
+    "playerIds": ["chunxiao-001", "chunxiao-002"]
   }
 ]
 ```

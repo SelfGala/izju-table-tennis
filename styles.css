@@ -263,6 +263,116 @@ h2 {
   background: #fafaf9;
 }
 
+.event-list {
+  display: grid;
+  gap: 14px;
+}
+
+.event-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  cursor: pointer;
+}
+
+.event-card:hover {
+  background: #fafaf9;
+}
+
+.event-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  font-size: 0.88rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.status-upcoming {
+  background: #f8fafc;
+}
+
+.status-ongoing {
+  background: var(--accent-soft);
+  color: #23463d;
+  border-color: #d6e5dc;
+}
+
+.status-completed {
+  background: #f5f5f4;
+}
+
+.event-summary,
+.match-event {
+  margin: 0;
+  color: var(--muted);
+}
+
+.event-meta-grid,
+.event-meta-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 18px;
+  margin: 16px 0 0;
+}
+
+.event-meta-grid dt,
+.event-meta-list dt {
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.event-meta-grid dd,
+.event-meta-list dd {
+  margin: 6px 0 0;
+  font-weight: 600;
+}
+
+.event-detail-grid {
+  margin-top: 18px;
+}
+
+.roster-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.roster-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 15px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+}
+
+.roster-item strong {
+  font-variant-numeric: tabular-nums;
+}
+
+.empty-block {
+  padding: 18px;
+  border: 1px dashed var(--line);
+  border-radius: 6px;
+  color: var(--muted);
+  background: #fcfcfb;
+}
+
 .ranking-cards {
   display: none;
   gap: 12px;
@@ -406,6 +516,11 @@ h2 {
   color: var(--muted);
 }
 
+.match-event {
+  margin-top: 4px;
+  font-size: 0.92rem;
+}
+
 .match-title {
   margin: 0 0 6px;
   display: flex;
@@ -543,7 +658,10 @@ code {
   .summary-grid,
   .detail-grid,
   .player-layout,
-  .admin-form {
+  .admin-form,
+  .event-meta-grid,
+  .event-meta-list,
+  .roster-grid {
     grid-template-columns: 1fr;
   }
 
@@ -568,6 +686,10 @@ code {
   .site-nav {
     gap: 12px;
     flex-wrap: wrap;
+  }
+
+  .event-card-top {
+    flex-direction: column;
   }
 
   .ranking-table-wrap {

@@ -1,32 +1,122 @@
 [
   {
-    "id": "zhangsan",
-    "name": "张三",
-    "initialRating": 1500,
-    "joinDate": "2025-01-01"
+    "id": "chunxiao-001",
+    "name": "柴嘉树",
+    "initialRating": 1000,
+    "joinDate": "2026-04-25"
   },
   {
-    "id": "lisi",
-    "name": "李四",
-    "initialRating": 1500,
-    "joinDate": "2025-01-01"
+    "id": "chunxiao-002",
+    "name": "高铭言",
+    "initialRating": 1000,
+    "joinDate": "2026-04-25"
   },
   {
-    "id": "wangwu",
-    "name": "王五",
-    "initialRating": 1500,
-    "joinDate": "2025-01-05"
+    "id": "chunxiao-003",
+    "name": "陈伟成",
+    "initialRating": 1000,
+    "joinDate": "2026-04-25"
   },
   {
-    "id": "zhaoliu",
-    "name": "赵六",
-    "initialRating": 1500,
-    "joinDate": "2025-01-08"
+    "id": "chunxiao-004",
+    "name": "陈修远",
+    "initialRating": 1000,
+    "joinDate": "2026-04-25"
   },
   {
-    "id": "sunqi",
-    "name": "孙七",
-    "initialRating": 1500,
-    "joinDate": "2025-01-10"
+    "id": "chunxiao-005",
+    "name": "胡桦键",
+    "initialRating": 1000,
+    "joinDate": "2026-04-25"
+  },
+  {
+    "id": "chunxiao-006",
+    "name": "王思源",
+    "initialRating": 1000,
+    "joinDate": "2026-04-25"
+  },
+  {
+    "id": "chunxiao-007",
+    "name": "王梓熠",
+    "initialRating": 1000,
+    "joinDate": "2026-04-25"
+  },
+  {
+    "id": "chunxiao-008",
+    "name": "董嘉铖",
+    "initialRating": 1000,
+    "joinDate": "2026-04-25"
+  },
+  {
+    "id": "chunxiao-009",
+    "name": "张欣悦",
+    "initialRating": 1000,
+    "joinDate": "2026-04-25"
+  },
+  {
+    "id": "chunxiao-010",
+    "name": "朱皓宇",
+    "initialRating": 1000,
+    "joinDate": "2026-04-25"
+  },
+  {
+    "id": "chunxiao-011",
+    "name": "方硕涵",
+    "initialRating": 1000,
+    "joinDate": "2026-04-25"
+  },
+  {
+    "id": "chunxiao-012",
+    "name": "高乐轩",
+    "initialRating": 1000,
+    "joinDate": "2026-04-25"
+  },
+  {
+    "id": "chunxiao-013",
+    "name": "潘洛西",
+    "initialRating": 1000,
+    "joinDate": "2026-04-25"
+  },
+  {
+    "id": "chunxiao-014",
+    "name": "陈钰骏",
+    "initialRating": 1000,
+    "joinDate": "2026-04-25"
+  },
+  {
+    "id": "chunxiao-015",
+    "name": "林泽诚",
+    "initialRating": 1000,
+    "joinDate": "2026-04-25"
+  },
+  {
+    "id": "chunxiao-016",
+    "name": "代梓搏",
+    "initialRating": 1000,
+    "joinDate": "2026-04-25"
+  },
+  {
+    "id": "chunxiao-017",
+    "name": "崔宏宇",
+    "initialRating": 1000,
+    "joinDate": "2026-04-25"
+  },
+  {
+    "id": "chunxiao-018",
+    "name": "丁天宥",
+    "initialRating": 1000,
+    "joinDate": "2026-04-25"
+  },
+  {
+    "id": "chunxiao-019",
+    "name": "魏宇杰",
+    "initialRating": 1000,
+    "joinDate": "2026-04-25"
+  },
+  {
+    "id": "chunxiao-020",
+    "name": "William Wang",
+    "initialRating": 1000,
+    "joinDate": "2026-04-25"
   }
 ]

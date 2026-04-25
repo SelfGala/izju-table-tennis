@@ -1,9 +1,9 @@
 window.APP_CONFIG = {
   siteTitle: "校内乒乓球积分赛",
-  repoOwner: "your-github-name",
-  repoName: "your-repo-name",
+  repoOwner: "SelfGala",
+  repoName: "izju-table-tennis",
   repoBranch: "main",
-  basePath: "",
+  basePath: "/izju-table-tennis",
   oauth: {
     clientId: "your_github_oauth_client_id",
     redirectPath: "/",
