@@ -49,12 +49,6 @@ const COPY = {
       upcoming: "当前待开赛赛事 {count} 场",
       autoDelta: "每场自动计算双方积分变化",
     },
-    home: {
-      rosterEyebrow: "报名总表",
-      rosterTitle: "全部报名名单",
-      rosterIntro: "主页汇总所有报过名的球员，赛事页再看单场比赛名单。",
-      joined: "报名时间",
-    },
     rankings: {
       eyebrow: "积分排名",
       title: "排行榜",
@@ -173,12 +167,6 @@ const COPY = {
       mixedRating: "Starting ratings follow the roster data",
       upcoming: "{count} upcoming event(s)",
       autoDelta: "Each result updates both ratings automatically",
-    },
-    home: {
-      rosterEyebrow: "Master roster",
-      rosterTitle: "All registered players",
-      rosterIntro: "The homepage keeps the full signup list, while each event page shows its own roster.",
-      joined: "Joined",
     },
     rankings: {
       eyebrow: "Standings",
@@ -511,36 +499,6 @@ function renderEventsPage() {
               </article>
             `;
           })
-          .join("")}
-      </div>
-    </section>
-  `;
-}
-
-function renderRosterOverview() {
-  const players = [...state.data.players].sort(
-    (a, b) => a.joinDate.localeCompare(b.joinDate) || a.name.localeCompare(b.name, "zh-CN"),
-  );
-
-  return `
-    <section class="panel">
-      <div class="panel-head">
-        <div>
-          <p class="eyebrow">${escapeHtml(t("home.rosterEyebrow"))}</p>
-          <h1>${escapeHtml(t("home.rosterTitle"))}</h1>
-        </div>
-        <p class="panel-intro">${escapeHtml(t("home.rosterIntro"))}</p>
-      </div>
-      <div class="roster-grid">
-        ${players
-          .map(
-            (player) => `
-              <a href="${buildHash(`/player/${player.id}`)}" class="roster-item">
-                <span>${escapeHtml(player.name)}</span>
-                <strong>${escapeHtml(formatDateText(player.joinDate))}</strong>
-              </a>
-            `,
-          )
           .join("")}
       </div>
     </section>
@@ -1035,7 +993,7 @@ function renderApp() {
   } else if (state.route.path.startsWith("/player/")) {
     content = renderPlayerDetail(state.route.segments[1]);
   } else {
-    content = `${renderSummary()}${renderRosterOverview()}${renderRankings()}`;
+    content = `${renderSummary()}${renderRankings()}`;
   }
 
   app.innerHTML = `
