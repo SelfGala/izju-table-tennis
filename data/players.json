@@ -24,12 +24,6 @@
     "joinDate": "2026-04-25"
   },
   {
-    "id": "student-005",
-    "name": "胡桦键",
-    "initialRating": 1000,
-    "joinDate": "2026-04-25"
-  },
-  {
     "id": "student-006",
     "name": "王思源",
     "initialRating": 1000,
@@ -38,12 +32,6 @@
   {
     "id": "student-007",
     "name": "王梓熠",
-    "initialRating": 1000,
-    "joinDate": "2026-04-25"
-  },
-  {
-    "id": "student-008",
-    "name": "董嘉铖",
     "initialRating": 1000,
     "joinDate": "2026-04-25"
   },
@@ -62,18 +50,6 @@
   {
     "id": "student-011",
     "name": "方硕涵",
-    "initialRating": 1000,
-    "joinDate": "2026-04-25"
-  },
-  {
-    "id": "student-012",
-    "name": "高乐轩",
-    "initialRating": 1000,
-    "joinDate": "2026-04-25"
-  },
-  {
-    "id": "student-013",
-    "name": "潘洛西",
     "initialRating": 1000,
     "joinDate": "2026-04-25"
   },
