@@ -1,5 +1,18 @@
 const DEFAULT_RATING = 1500;
 
+export function compareMatchesByTimeline(a, b) {
+  return (
+    a.date.localeCompare(b.date) ||
+    (a.eventOrder ?? Number.MAX_SAFE_INTEGER) - (b.eventOrder ?? Number.MAX_SAFE_INTEGER) ||
+    (a.sequence ?? Number.MAX_SAFE_INTEGER) - (b.sequence ?? Number.MAX_SAFE_INTEGER) ||
+    String(a.id).localeCompare(String(b.id))
+  );
+}
+
+export function compareMatchesByTimelineDesc(a, b) {
+  return compareMatchesByTimeline(b, a);
+}
+
 function getKFactor(matchCount) {
   if (matchCount < 10) return 64;
   if (matchCount < 30) return 32;
@@ -45,7 +58,9 @@ export function buildLeagueTable(players, matches) {
     ]),
   );
 
-  const sortedMatches = [...matches].sort((a, b) => a.date.localeCompare(b.date));
+  const sortedMatches = [...matches].sort(compareMatchesByTimeline);
+
+  const enrichedMatches = [];
 
   for (const match of sortedMatches) {
     const winner = playerMap.get(match.winnerId);
@@ -65,6 +80,14 @@ export function buildLeagueTable(players, matches) {
     const loserDelta =
       typeof match.loserRatingChange === "number" ? match.loserRatingChange : -winnerDelta;
 
+    const enrichedMatch = {
+      ...match,
+      winnerRatingChange: winnerDelta,
+      loserRatingChange: loserDelta,
+    };
+
+    enrichedMatches.push(enrichedMatch);
+
     winner.currentRating += winnerDelta;
     loser.currentRating += loserDelta;
     winner.wins += 1;
@@ -78,14 +101,14 @@ export function buildLeagueTable(players, matches) {
     loser.ratingHistory.push({ date: match.date, rating: loser.currentRating, matchId: match.id });
 
     winner.recentMatches.unshift({
-      ...match,
+      ...enrichedMatch,
       result: "win",
       opponentId: loser.id,
       opponentName: loser.name,
       ratingChange: winnerDelta,
     });
     loser.recentMatches.unshift({
-      ...match,
+      ...enrichedMatch,
       result: "loss",
       opponentId: winner.id,
       opponentName: winner.name,
@@ -133,7 +156,7 @@ export function buildLeagueTable(players, matches) {
   return {
     standings,
     playerMap: new Map(standings.map((player) => [player.id, player])),
-    matches: sortedMatches,
+    matches: enrichedMatches,
   };
 }
 

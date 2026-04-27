@@ -1,0 +1,162 @@
+[
+  {
+    "id": "m001",
+    "sequence": 1,
+    "path": "./matches/001-m001.json"
+  },
+  {
+    "id": "m002",
+    "sequence": 2,
+    "path": "./matches/002-m002.json"
+  },
+  {
+    "id": "m003",
+    "sequence": 3,
+    "path": "./matches/003-m003.json"
+  },
+  {
+    "id": "m004",
+    "sequence": 4,
+    "path": "./matches/004-m004.json"
+  },
+  {
+    "id": "m005",
+    "sequence": 5,
+    "path": "./matches/005-m005.json"
+  },
+  {
+    "id": "m006",
+    "sequence": 6,
+    "path": "./matches/006-m006.json"
+  },
+  {
+    "id": "m007",
+    "sequence": 7,
+    "path": "./matches/007-m007.json"
+  },
+  {
+    "id": "m008",
+    "sequence": 8,
+    "path": "./matches/008-m008.json"
+  },
+  {
+    "id": "m009",
+    "sequence": 9,
+    "path": "./matches/009-m009.json"
+  },
+  {
+    "id": "m010",
+    "sequence": 10,
+    "path": "./matches/010-m010.json"
+  },
+  {
+    "id": "m011",
+    "sequence": 11,
+    "path": "./matches/011-m011.json"
+  },
+  {
+    "id": "m012",
+    "sequence": 12,
+    "path": "./matches/012-m012.json"
+  },
+  {
+    "id": "m013",
+    "sequence": 13,
+    "path": "./matches/013-m013.json"
+  },
+  {
+    "id": "m014",
+    "sequence": 14,
+    "path": "./matches/014-m014.json"
+  },
+  {
+    "id": "m015",
+    "sequence": 15,
+    "path": "./matches/015-m015.json"
+  },
+  {
+    "id": "m016",
+    "sequence": 16,
+    "path": "./matches/016-m016.json"
+  },
+  {
+    "id": "m017",
+    "sequence": 17,
+    "path": "./matches/017-m017.json"
+  },
+  {
+    "id": "m018",
+    "sequence": 18,
+    "path": "./matches/018-m018.json"
+  },
+  {
+    "id": "m019",
+    "sequence": 19,
+    "path": "./matches/019-m019.json"
+  },
+  {
+    "id": "m020",
+    "sequence": 20,
+    "path": "./matches/020-m020.json"
+  },
+  {
+    "id": "m021",
+    "sequence": 21,
+    "path": "./matches/021-m021.json"
+  },
+  {
+    "id": "m022",
+    "sequence": 22,
+    "path": "./matches/022-m022.json"
+  },
+  {
+    "id": "m023",
+    "sequence": 23,
+    "path": "./matches/023-m023.json"
+  },
+  {
+    "id": "m024",
+    "sequence": 24,
+    "path": "./matches/024-m024.json"
+  },
+  {
+    "id": "m025",
+    "sequence": 25,
+    "path": "./matches/025-m025.json"
+  },
+  {
+    "id": "m026",
+    "sequence": 26,
+    "path": "./matches/026-m026.json"
+  },
+  {
+    "id": "m027",
+    "sequence": 27,
+    "path": "./matches/027-m027.json"
+  },
+  {
+    "id": "m028",
+    "sequence": 28,
+    "path": "./matches/028-m028.json"
+  },
+  {
+    "id": "m029",
+    "sequence": 29,
+    "path": "./matches/029-m029.json"
+  },
+  {
+    "id": "m030",
+    "sequence": 30,
+    "path": "./matches/030-m030.json"
+  },
+  {
+    "id": "m031",
+    "sequence": 31,
+    "path": "./matches/031-m031.json"
+  },
+  {
+    "id": "m032",
+    "sequence": 32,
+    "path": "./matches/032-m032.json"
+  }
+]

@@ -11,9 +11,11 @@
 
 ## 数据文件
 
-- `data/players.json`：球员基础信息和初始积分。
-- `data/matches.json`：比赛结果、比分和每场积分变动。
-- `data/events.json`：赛事信息、状态和参赛球员列表。
+- `data/players.json`：全站总报名名单、球员基础信息和初始积分。
+- `data/events/index.json`：赛事目录入口。
+- `data/events/<event-id>/event.json`：单个赛事的信息、状态和参赛名单。
+- `data/events/<event-id>/matches/index.json`：该赛事的比赛目录。
+- `data/events/<event-id>/matches/*.json`：单场比赛文件，建议带 `sequence` 字段表示录入顺序。
 
 ## 积分计算规则
 
@@ -42,5 +44,7 @@ python3 -m http.server 4173
 ## 维护建议
 
 - 新增球员时，保持 `initialRating` 字段完整。
-- 录入比赛时，确保 `winnerId`、`loserId`、`score` 和 `date` 格式正确。
+- 新增赛事时，先在 `data/events/index.json` 注册，再创建对应赛事目录。
+- 录入比赛时，确保 `winnerId`、`loserId`、`score`、`date` 和 `sequence` 格式正确。
+- 如果有多场赛事，系统会按 `startDate` 排赛事顺序，再按每场 `sequence` 计算积分。
 - 如果手动维护比赛数据，`winnerRatingChange` 与 `loserRatingChange` 应保持绝对值相同、符号相反。

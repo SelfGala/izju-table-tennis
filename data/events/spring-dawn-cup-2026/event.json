@@ -1,0 +1,33 @@
+{
+  "id": "spring-dawn-cup-2026",
+  "name": "2026 春晓杯",
+  "season": "2026.04.25",
+  "startDate": "2026-04-25",
+  "endDate": "2026-04-25",
+  "status": "ended",
+  "location": "校内比赛场地",
+  "format": "单项赛事，11 分制",
+  "summary": "春晓杯参赛名单已确认，赛事已结束。",
+  "description": "本页面会在比赛结束后持续更新赛事内积分榜、比赛记录和参赛情况。",
+  "playerIds": [
+    "student-001",
+    "student-002",
+    "student-003",
+    "student-004",
+    "student-005",
+    "student-006",
+    "student-007",
+    "student-008",
+    "student-009",
+    "student-010",
+    "student-011",
+    "student-012",
+    "student-013",
+    "student-014",
+    "student-015",
+    "student-016",
+    "student-017",
+    "student-018",
+    "student-019"
+  ]
+}
